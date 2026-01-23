@@ -1,8 +1,12 @@
 pipeline {
     agent any
 
+    tools {
+        terraform 'terraform'
+    }
+
     stages {
-        stage('Checkout SCM') {
+        stage('Git Clone') {
             steps {
                 git 'https://github.com/mohdaaleem2111-creator/terraform-demo.git'
             }
@@ -19,9 +23,10 @@ pipeline {
                 sh 'terraform plan'
             }
         }
-         stage('Terraform Apply') {
+
+        stage('Terraform Apply') {
             steps {
-                sh 'terraform plan'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
