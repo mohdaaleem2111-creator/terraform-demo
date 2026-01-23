@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
                 git 'https://github.com/mohdaaleem2111-creator/terraform-demo.git'
             }
